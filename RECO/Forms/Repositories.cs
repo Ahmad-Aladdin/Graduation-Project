@@ -51,12 +51,29 @@ namespace RECO.Forms
         private void PictureSetter(PictureBox senderBtn,string Source)
         {
             senderBtn.Location = new Point(70, 45);
-            Label label = new Label();
-            label.Text = "X";
-            label.AutoSize = true;
-            label.BackColor = Color.Transparent;
-            label.Location = new Point(0, 0);
-            senderBtn.Controls.Add(label);
+            //Label label = new Label();
+            //label.Text = "X";
+            //label.ForeColor = Color.White;
+            //label.AutoSize = true;
+            //label.BackColor = Color.Transparent;
+            //label.Location = new Point(0, 0);
+            RoundedButton button = new();
+            button.TextColor = Color.White;
+           // button.BackColor = Color.FromArgb(23, 16, 30);
+            button.TextAlign = ContentAlignment.MiddleCenter;
+            button.Location = new Point(1,1);
+            button.AutoSize = true;
+            button.Text = "X";
+            button.BackColor = Color.Transparent;
+            button.FlatStyle = FlatStyle.Flat;
+            button.OnHoverBorderColor = Color.FromArgb(183, 0, 6);
+            button.OnHoverTextColor = Color.White;
+            button.Size = new Size(30,30);
+            button.FlatAppearance.BorderSize = 0;
+            button.ButtonColor = Color.FromArgb(43, 49, 91);
+            button.BorderColor = Color.FromArgb(43, 49, 91);
+            button.OnHoverButtonColor = Color.FromArgb(183, 0, 6);
+            senderBtn.Controls.Add(button);
             // Panel.Size = new Size(180, 100);
             senderBtn.Margin = new Padding(25);
             senderBtn.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -75,9 +92,9 @@ namespace RECO.Forms
                 psi.UseShellExecute = false;      
                Process.Start(psi);
             };
-            label.Click += delegate {
-                  (label.Parent as PictureBox).Image.Dispose();
-                  (label.Parent as PictureBox).Dispose();
+            button.Click += delegate {
+                  (button.Parent as PictureBox).Image.Dispose();
+                  (button.Parent as PictureBox).Dispose();
                     Task.Delay(200);
                 File.Delete(Source);
             };
@@ -93,6 +110,7 @@ namespace RECO.Forms
                 senderBtn.OnHoverBorderColor = Color.FromArgb(85, 0, 46);
                 senderBtn.TextColor = Color.FromArgb(85, 0, 46);
                 senderBtn.ForeColor = Color.Red;
+                senderBtn.FlatAppearance.BorderSize = 0;
                 senderBtn.Text = "Browse";
                 senderBtn.Font = new Font("arial", 8);
                 senderBtn.TextAlign = ContentAlignment.MiddleCenter;
@@ -108,12 +126,13 @@ namespace RECO.Forms
                 senderBtn.OnHoverBorderColor = Color.FromArgb(85, 0, 46);
                 senderBtn.TextColor = Color.FromArgb(85, 0, 46);
                 senderBtn.ForeColor = Color.Red;
+                senderBtn.FlatAppearance.BorderSize = 0;
                 senderBtn.Text = "Browse";
                 senderBtn.Font = new Font("arial", 8);
                 senderBtn.TextAlign = ContentAlignment.MiddleCenter;
                 senderBtn.Dock = DockStyle.Right;
                 senderBtn.Location = new Point(70, 45);
-                senderBtn.Size = new Size(42, 35);
+                senderBtn.Size = new Size(47, 35);
             }
             senderBtn.Click += delegate { 
             using var x = new OpenFileDialog();
@@ -138,6 +157,7 @@ namespace RECO.Forms
                 DeleteButton.TextColor = Color.FromArgb(85, 0, 46);
                 DeleteButton.BorderColor = Color.Yellow;
                 DeleteButton.ForeColor = Color.Red;
+                DeleteButton.FlatAppearance.BorderSize = 0;
                 DeleteButton.Text = "Delete";
                 DeleteButton.Font = new Font("arial", 8);
                 DeleteButton.TextAlign = ContentAlignment.MiddleCenter;
@@ -153,6 +173,7 @@ namespace RECO.Forms
                 DeleteButton.TextColor = Color.FromArgb(85, 0, 46);
                 DeleteButton.BorderColor = Color.Yellow;
                 DeleteButton.ForeColor = Color.Red;
+                DeleteButton.FlatAppearance.BorderSize = 0;
                 DeleteButton.Text = "Delete";
                 DeleteButton.Font = new Font("arial", 8);
                 DeleteButton.TextAlign = ContentAlignment.MiddleCenter;
@@ -266,6 +287,7 @@ namespace RECO.Forms
                 EditButton.Text = "Edit";
                 EditButton.TextColor = Color.FromArgb(85, 0, 46);
                 EditButton.Font = new Font("arial", 8);
+                EditButton.FlatAppearance.BorderSize = 0;
                 EditButton.TextAlign = ContentAlignment.MiddleCenter;
                 EditButton.Location = new Point(70, 45);
                 EditButton.Dock = DockStyle.Bottom;
@@ -283,6 +305,7 @@ namespace RECO.Forms
                 EditButton.ForeColor = Color.Red;
                 // EditButton.BorderColor = Color.FromArgb(44, 43, 97);
                 EditButton.Text = "Edit";
+                EditButton.FlatAppearance.BorderSize = 0;
                 EditButton.TextColor = Color.FromArgb(85, 0, 46);
                 EditButton.Font = new Font("arial", 8);
                 EditButton.TextAlign = ContentAlignment.MiddleCenter;
@@ -314,10 +337,10 @@ namespace RECO.Forms
             {
                 senderPnl.BackColor = Color.FromArgb(44, 43, 97);
                 senderPnl.ForeColor = Color.White;
-                senderPnl.Margin = new Padding(10);
+                senderPnl.Margin = new Padding(7);
                 senderPnl.BorderStyle = BorderStyle.Fixed3D;
                 senderPnl.Location = new Point(56, 90);
-                senderPnl.Size = new Size(250, 35);
+                senderPnl.Size = new Size(255, 40);
                 label.BorderStyle = BorderStyle.None;
                 label.Font = new Font("Comic Sans MS", 12, FontStyle.Bold);
                 label.ForeColor = Color.White;
@@ -380,7 +403,7 @@ namespace RECO.Forms
         {
             if (Frender)
             {
-                 flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+                 flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(23, 16, 30);
                 flowLayoutPanel1.Width = 290;
                 flowLayoutPanel1.Height += 100;
                 flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left))));
