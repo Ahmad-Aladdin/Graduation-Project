@@ -15,7 +15,6 @@ namespace RECO.Forms
         string _PATH;
         //   private Button DeleteButton
         Label addReposmsg { get; set; } = new Label();
-
         private RoundedButton EditButton { get; set; }
         private Label NothingIn { get; set; }
         private bool Frender { get; set; } = false;
@@ -53,8 +52,6 @@ namespace RECO.Forms
                 NothingIn.Margin = new Padding(245, 30, 0, 0);
             }
         }
-
-
         private void PictureSetter(PictureBox senderBtn,string Source)
         {
             senderBtn.Location = new Point(70, 45);
@@ -99,8 +96,6 @@ namespace RECO.Forms
            // senderBtn.Image.Dispose();
           //  senderBtn.Dispose();
         }
-
-
         private void buttonBrowse(RoundedButton senderBtn,string Source)
         {
             if (!Frender)
@@ -332,8 +327,6 @@ namespace RECO.Forms
            
         }
 
-
-
         private void PanelView(Panel senderPnl, Label label,string allDirpath)
         {
             if (!Frender)
@@ -425,7 +418,7 @@ namespace RECO.Forms
         {
             if (Frender)
             {
-                 flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+                flowLayoutPanel1.BackColor = System.Drawing.Color.White;
                 flowLayoutPanel1.Width = 290;
                 flowLayoutPanel1.Height += 100;
                 flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left))));
@@ -473,7 +466,7 @@ namespace RECO.Forms
                         RoundedButton Browse = new();
                         buttonBrowse(Browse, allDirpath);
                         panel.Controls.Add(Browse);
-                    }
+                  }
                     // the panel holds dir name button && remove button && rename button
                     RoundedButton repoRename = new (); // the I button , next to remove button
                     //Delete(button_x, allDirpath, panel);

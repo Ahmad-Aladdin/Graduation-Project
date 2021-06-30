@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qFFJTvPYBwHB1G5V/+uWrhK/MmmEHJ/krx5pnPsSpV2j7ZSFLj03102d5mzMdsgqDTawKM0uuSC/OVigWJz6jQ==",
+  "dgSpecHash": "Y26LXh4Gjk+GT4n1OpYKBmEoWnF+6iYbZWlIIfzk97fSWTi06RZBi3fveJQqrO7KaPjGYuHZkVRdvQsY0Ze36Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\a7med\\OneDrive\\Documents\\GitHub\\RECO---GP\\RECO\\RECO.csproj",
+  "projectFilePath": "C:\\Users\\a7med\\OneDrive\\Documents\\GitHub\\Graduation-Project\\RECO\\RECO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\a7med\\.nuget\\packages\\fontawesome.sharp\\5.15.3\\fontawesome.sharp.5.15.3.nupkg.sha512",
     "C:\\Users\\a7med\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.1\\microsoft.netcore.platforms.5.0.1.nupkg.sha512",
