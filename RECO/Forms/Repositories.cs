@@ -6,7 +6,6 @@ using System.Linq;
 using System.Diagnostics;
 using ePOSOne.btnProduct;
 using System.Threading.Tasks;
-
 namespace RECO.Forms
 {
     public partial class Repositories : Form
@@ -29,11 +28,8 @@ namespace RECO.Forms
             {
                 viewRepos(Path.ToString()+@"\");
             }
-
             // Method to show all repos and its actions
         }
-
-
         private void NoRepoLabel(object senderLbl)
         {
             if (!Frender)
@@ -76,25 +72,15 @@ namespace RECO.Forms
                   Environment.Is64BitOperatingSystem ?  path.Replace(" (x86)", "") : path,
                   @"\Windows Photo Viewer\PhotoViewer.dll",
                   Source));
-                psi.UseShellExecute = false;
-
-             
+                psi.UseShellExecute = false;      
                Process.Start(psi);
-
             };
             label.Click += delegate {
-               
-
+                  (label.Parent as PictureBox).Image.Dispose();
+                  (label.Parent as PictureBox).Dispose();
+                    Task.Delay(200);
                 File.Delete(Source);
-
             };
-            //foreach (PictureBox item in flowLayoutPanel2.Controls)
-            //{
-            //    item.Image.Dispose();
-            //    item.Dispose();
-            //}
-           // senderBtn.Image.Dispose();
-          //  senderBtn.Dispose();
         }
         private void buttonBrowse(RoundedButton senderBtn,string Source)
         {
@@ -138,12 +124,8 @@ namespace RECO.Forms
                 for (int i = 0; i < x.FileNames.Count(); i++)
                 {
                     File.Copy(x.FileNames[i], Source + "/" + x.SafeFileNames[i]);
-
                 }
-
             };
-
-
         }
         private void buttonDelete(RoundedButton DeleteButton)
         {
@@ -177,7 +159,6 @@ namespace RECO.Forms
                 DeleteButton.Location = new Point(70, 45);
                 DeleteButton.Size = new Size(42, 35);
                 DeleteButton.Dock = DockStyle.Right;
-
             }
         }
         void Delete(RoundedButton DeleteButton,string allDirpath, Panel panel)
@@ -187,7 +168,6 @@ namespace RECO.Forms
                 DeleteDialogeMessage delete = new DeleteDialogeMessage();
                 delete.Show();
                 Done done = new Done();
-
                 delete.Yes.Click += delegate
                 {
                     if (Frender)
@@ -209,7 +189,6 @@ namespace RECO.Forms
                                 {
                                 }
                             }
-
                             //        flowLayoutPanel2.Controls.Clear();
                             Task.Delay(200);
                             foreach (var item in x.GetFiles())
@@ -218,19 +197,16 @@ namespace RECO.Forms
                                 {
                                     File.Delete(item.FullName);
                                     // MessageBox.Show($"You have {x.GetFiles().Length } left to be deleted");
-
                                 }
                                 catch
                                 {
                                 }
-
                             }
                         }
                     }
                     else
                     {
                         DirectoryInfo x = new DirectoryInfo(allDirpath);
-
                         foreach (var item in x.GetDirectories())
                         {
                             foreach (var file in item.GetFiles())
@@ -250,14 +226,12 @@ namespace RECO.Forms
                             catch
                             {
                             }
-
                         }
                     }
                     if (Directory.Exists(allDirpath))
                     {
                         Directory.Delete(allDirpath);
                     }
-
                     foreach (Control item in panel.Controls)
                     {
                         item.Dispose();
@@ -267,22 +241,15 @@ namespace RECO.Forms
                     delete.Close();
                     done.Show();
                     NoRepoLabel(addReposmsg);
-            
                     if (flowLayoutPanel1.Controls.Count is 1)
                         addReposmsg.Visible = true;
                     else addReposmsg.Visible = false;
                     if (Frender)
                     {
                         addReposmsg.Visible = false;
-
                     }
                 };
-
-                //if (flowLayoutPanel1.Controls.Count is 0)
-                //    addReposmsg.Visible = true;
-                //else addReposmsg.Visible = false;
             };
-
         }
         private void buttonEdit(object senderBtn)
         {
@@ -323,10 +290,8 @@ namespace RECO.Forms
                 EditButton.Dock = DockStyle.Right;
                 EditButton.Size = new Size(42, 35);
                 EditButton.BorderColor = Color.Yellow;
-            }
-           
+            }    
         }
-
         private void PanelView(Panel senderPnl, Label label,string allDirpath)
         {
             if (!Frender)
@@ -363,7 +328,6 @@ namespace RECO.Forms
                 label.Location = new Point(30, 10);
                 label.Dock = DockStyle.Fill;
             }
-            
             label.Click += delegate
             {
                 foreach (PictureBox item in flowLayoutPanel2.Controls)
@@ -371,12 +335,10 @@ namespace RECO.Forms
                     item.Image.Dispose();
                     item.Dispose();
                     flowLayoutPanel2.Controls.Clear();
-
                 }
                 //  KeyWords keyWords = new KeyWords(allDirpath);
                 if (Frender)
                 {
-              
                     DirectoryInfo DirectoryInfo = new DirectoryInfo($@"{allDirpath}"); // get all info
                     foreach (FileInfo item in DirectoryInfo.GetFiles())
                     {
@@ -418,7 +380,7 @@ namespace RECO.Forms
         {
             if (Frender)
             {
-                flowLayoutPanel1.BackColor = System.Drawing.Color.White;
+                 flowLayoutPanel1.BackColor = System.Drawing.Color.White;
                 flowLayoutPanel1.Width = 290;
                 flowLayoutPanel1.Height += 100;
                 flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left))));
@@ -466,7 +428,7 @@ namespace RECO.Forms
                         RoundedButton Browse = new();
                         buttonBrowse(Browse, allDirpath);
                         panel.Controls.Add(Browse);
-                  }
+                    }
                     // the panel holds dir name button && remove button && rename button
                     RoundedButton repoRename = new (); // the I button , next to remove button
                     //Delete(button_x, allDirpath, panel);
@@ -738,5 +700,16 @@ namespace RECO.Forms
             else addReposmsg.Visible = false;
         }
 
+ 
+
+        private void Repositories_FormClosed_1(object sender, FormClosedEventArgs e)
+        {
+            foreach (PictureBox item in flowLayoutPanel2.Controls)
+            {
+                item.Image.Dispose();
+            }
+            Dispose();
+        }
     }
+
 }
